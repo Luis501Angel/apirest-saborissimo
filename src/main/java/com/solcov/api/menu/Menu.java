@@ -13,19 +13,19 @@ public class Menu {
     @Id
     private Long id;
 
-    @ApiModelProperty(value = "Entrances of the daily menu")
+    @ApiModelProperty(value = "Entradas del menu diario")
     private String[] entrances;
 
-    @ApiModelProperty(value = "Middles of the daily menu")
+    @ApiModelProperty(value = "Medios del menu diario")
     private String[] middles;
 
-    @ApiModelProperty(value = "Stews of the daily menu")
+    @ApiModelProperty(value = "Guisados del menu diario")
     private String[] stews;
 
-    @ApiModelProperty(value = "Desserts of the daily menu")
+    @ApiModelProperty(value = "Postres del menu diario")
     private String[] desserts;
 
-    @ApiModelProperty(value = "Drinks of the daily menu")
+    @ApiModelProperty(value = "Bebidas del menu diario")
     private String[] drinks;
 
 

@@ -15,7 +15,7 @@ public class ControllerMenu {
     private IRepositoryMenu repositoryMenu;
 
     @RequestMapping(value = "/menu", method = RequestMethod.POST)
-    @ApiOperation(value = "Create a new daily menu")
+    @ApiOperation(value = "Crea un nuevo menu diario")
     public boolean createMenu(@RequestBody Menu menu){
         try{
             repositoryMenu.save(menu);
@@ -26,13 +26,13 @@ public class ControllerMenu {
     }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
-    @ApiOperation(value = "Get the daily menu")
+    @ApiOperation(value = "Obtiene el menu diario")
     public List<Menu> getAllMenus(){
         return repositoryMenu.findAll();
     }
 
     @RequestMapping(value = "/menu/{id}", method = RequestMethod.DELETE)
-    @ApiOperation(value = "Delete the daily menu")
+    @ApiOperation(value = "Elimina el menu diario")
     public boolean deleteMenu(@PathVariable Long id){
         try {
             repositoryMenu.deleteById(id);

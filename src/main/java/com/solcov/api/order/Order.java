@@ -19,30 +19,30 @@ public class Order implements Serializable {
     private Long id;
 
     @NotEmpty()
-    @ApiModelProperty(value = "State of the order")
+    @ApiModelProperty(value = "Estado actual de la orden [Entrago/No entregado]")
     private boolean state;
 
     @NotEmpty()
-    @ApiModelProperty(value = "Menu of the order")
+    @ApiModelProperty(value = "Menu seleccionado de la orden")
     private MenuOrder order;
 
     @Size(max = 8)
     @NotEmpty()
-    @ApiModelProperty(value = "Type of the order")
+    @ApiModelProperty(value = "Tipo de pedido para la orden [PEDIDO/APARTADO]")
     private String orderType;
 
-    @ApiModelProperty(value = "Extras of the order")
+    @ApiModelProperty(value = "Extras para el pedido")
     private String extras;
 
-    @ApiModelProperty(value = "Comments of the order")
+    @ApiModelProperty(value = "Comentarios del pedido")
     private String comments;
 
     @NotEmpty()
-    @ApiModelProperty(value = "Address of the order")
+    @ApiModelProperty(value = "Direccion de envio en caso de escoger pedido a domicilio")
     private Address address;
 
     @NotEmpty()
-    @ApiModelProperty(value = "Client of the order")
+    @ApiModelProperty(value = "Datos del cliente del pedido")
     private Client client;
 
     public Order() {

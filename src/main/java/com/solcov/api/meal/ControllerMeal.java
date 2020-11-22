@@ -20,7 +20,7 @@ public class ControllerMeal {
     private IRepositoryMeal repositoryMeal;
 
     @RequestMapping(value = "/meal", method = RequestMethod.POST)
-    @ApiOperation(value = "Create a new meal for the menu")
+    @ApiOperation(value = "Crea un nuevo platillo")
     public boolean createMeal(@RequestBody Meal meal){
         try {
             repositoryMeal.save(meal);
@@ -31,7 +31,7 @@ public class ControllerMeal {
     }
 
     @RequestMapping(value = "/meal/{id}", method = RequestMethod.GET)
-    @ApiOperation(value = "Find a meal by id")
+    @ApiOperation(value = "Busca un platillo por ID")
     public Meal getMeal(@PathVariable Long id){
         Optional<Meal> meal = repositoryMeal.findById(id);
         if(meal.isPresent()){
@@ -42,13 +42,13 @@ public class ControllerMeal {
     }
 
     @RequestMapping(value = "/meal", method = RequestMethod.GET)
-    @ApiOperation(value = "Find all the meals")
+    @ApiOperation(value = "Busca todos los platillos")
     public List<Meal> getAllMeals() {
         return repositoryMeal.findAll();
     }
 
     @RequestMapping(value = "/meal/{id}", method = RequestMethod.PUT)
-    @ApiOperation(value = "Update a meal")
+    @ApiOperation(value = "Actualiza un platillo")
     public boolean updateMeal(@RequestBody Meal meal, @PathVariable Long id) {
         try {
             meal.setId(id);
@@ -60,7 +60,7 @@ public class ControllerMeal {
     }
 
     @RequestMapping(value = "/meal/{id}", method = RequestMethod.DELETE)
-    @ApiOperation(value = "Delete a meal by id")
+    @ApiOperation(value = "Elimina un platillo por ID")
     public boolean deleteMeal(@PathVariable Long id) {
         try {
             repositoryMeal.deleteById(id);

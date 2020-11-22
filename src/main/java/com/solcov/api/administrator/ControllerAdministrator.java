@@ -26,7 +26,7 @@ public class ControllerAdministrator {
     private IRepositoryAdministrator repositoryUser;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ApiOperation(value = "Login as administrator", notes = "Login with username and password")
+    @ApiOperation(value = "Inicio de sesion como administrador", notes = "Inicia sesion con nombre de usuario y contraseña")
     public Map<String, String> login(@RequestParam("username") String username, @RequestParam("password") String password) {
         List<Administrator> lstAdminExist = repositoryUser.findByUsername(username);
         HashMap<String, String> map = new HashMap<>();
