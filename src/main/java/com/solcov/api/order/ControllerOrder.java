@@ -1,5 +1,6 @@
 package com.solcov.api.order;
 
+import com.solcov.api.meal.Meal;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,15 +13,18 @@ import java.util.Optional;
 @EnableAutoConfiguration
 public class ControllerOrder {
 
+    @Autowired
     private IRepositoryOrder repositoryOrder;
 
     @RequestMapping(value = "/order", method = RequestMethod.POST)
     @ApiOperation(value = "Crea una nueva orden de pedido")
     public boolean createOrder(@RequestBody Order order){
         try {
+            System.out.println(order.getId());
             repositoryOrder.save(order);
             return true;
         } catch (Exception e){
+            e.printStackTrace();
             return false;
         }
     }
@@ -40,6 +44,18 @@ public class ControllerOrder {
     @ApiOperation(value = "Obtiene todas las ordenes")
     public List<Order> getAllOrders(){
         return repositoryOrder.findAll();
+    }
+
+    @RequestMapping(value = "/order/{id}", method = RequestMethod.PUT)
+    @ApiOperation(value = "Actualiza un orden de pedido")
+    public boolean updateMeal(@RequestBody Order order, @PathVariable Long id) {
+        try {
+            order.setId(id);
+            repositoryOrder.save(order);
+            return true;
+        } catch(Exception e){
+            return false;
+        }
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.DELETE)

@@ -1,24 +1,36 @@
 package com.solcov.api.address;
 
-public class Address {
+import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+@Entity
+public class Address implements Serializable{
+
+    @Id
     private Long id;
     private String street1;
     private String street2;
     private String colony;
     private String postalCode;
-    private String references;
+    private String address_references;
 
     public Address() {
     }
 
-    public Address(Long id, String street1, String street2, String colony, String postalCode, String references) {
+    public Address(Long id) {
+        this.id = id;
+    }
+
+    public Address(Long id, String street1, String street2, String colony, String postalCode, String address_references) {
         this.id = id;
         this.street1 = street1;
         this.street2 = street2;
         this.colony = colony;
         this.postalCode = postalCode;
-        this.references = references;
+        this.address_references = address_references;
     }
 
     public Long getId() {
@@ -62,10 +74,10 @@ public class Address {
     }
 
     public String getReferences() {
-        return references;
+        return address_references;
     }
 
-    public void setReferences(String references) {
-        this.references = references;
+    public void setReferences(String address_references) {
+        this.address_references = address_references;
     }
 }

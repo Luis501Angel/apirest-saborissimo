@@ -6,10 +6,10 @@ import com.solcov.api.menuorder.MenuOrder;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
 
@@ -18,17 +18,17 @@ public class Order implements Serializable {
     @SequenceGenerator(name = "order_generator", sequenceName = "s_order_sequence", initialValue = 1, allocationSize = 1)
     private Long id;
 
-    @NotEmpty()
-    @ApiModelProperty(value = "Estado actual de la orden [Entrago/No entregado]")
+    @ApiModelProperty(value = "Estado actual de la orden [Entregado/No entregado]")
     private boolean state;
 
-    @NotEmpty()
     @ApiModelProperty(value = "Menu seleccionado de la orden")
-    private MenuOrder order;
+    @OneToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "order_menu_fk"), name = "menu_order")
+    private MenuOrder menuOrder;
 
     @Size(max = 8)
-    @NotEmpty()
     @ApiModelProperty(value = "Tipo de pedido para la orden [PEDIDO/APARTADO]")
+    @Column(name = "order_type")
     private String orderType;
 
     @ApiModelProperty(value = "Extras para el pedido")
@@ -37,21 +37,23 @@ public class Order implements Serializable {
     @ApiModelProperty(value = "Comentarios del pedido")
     private String comments;
 
-    @NotEmpty()
     @ApiModelProperty(value = "Direccion de envio en caso de escoger pedido a domicilio")
+    //@OneToOne
+    //@JoinColumn(foreignKey = @ForeignKey(name = "order_address_fk"), name = "address")
     private Address address;
 
-    @NotEmpty()
     @ApiModelProperty(value = "Datos del cliente del pedido")
+    //@ManyToOne
+    //@JoinColumn(foreignKey = @ForeignKey(name = "order_client_fk"), name = "client")
     private Client client;
 
     public Order() {
     }
 
-    public Order(Long id, boolean state, MenuOrder order, String orderType, String extras, String comments, Address address, Client client) {
+    public Order(Long id, boolean state, MenuOrder menuOrder, String orderType, String extras, String comments, Address address, Client client) {
         this.id = id;
         this.state = state;
-        this.order = order;
+        this.menuOrder = menuOrder;
         this.orderType = orderType;
         this.extras = extras;
         this.comments = comments;
@@ -75,12 +77,12 @@ public class Order implements Serializable {
         this.state = state;
     }
 
-    public MenuOrder getOrder() {
-        return order;
+    public MenuOrder getMenuOrder() {
+        return menuOrder;
     }
 
-    public void setOrder(MenuOrder order) {
-        this.order = order;
+    public void setMenuOrder(MenuOrder menuOrder) {
+        this.menuOrder = menuOrder;
     }
 
     public String getOrderType() {

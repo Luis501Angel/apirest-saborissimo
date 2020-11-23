@@ -3,11 +3,7 @@ package com.solcov.api.meal;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +37,13 @@ public class ControllerMeal {
         }
     }
 
+    @RequestMapping(value = "/meal/type/{type}", method = RequestMethod.GET)
+    @ApiOperation(value = "Busca un platillo por el tipo")
+    public List<Meal> getMeal(@PathVariable String type){
+        List<Meal> lstMealByType = repositoryMeal.findByType(type);
+        return lstMealByType;
+    }
+
     @RequestMapping(value = "/meal", method = RequestMethod.GET)
     @ApiOperation(value = "Busca todos los platillos")
     public List<Meal> getAllMeals() {
@@ -69,4 +72,16 @@ public class ControllerMeal {
             return false;
         }
     }
+
+    public Meal getMealTest(Long id){
+        Optional<Meal> meal = repositoryMeal.findById(id);
+        System.out.println(meal.get().getName());
+        if(meal.isPresent()){
+            return meal.get();
+        } else {
+            return meal.get();
+        }
+    }
+
+
 }

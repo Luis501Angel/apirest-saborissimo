@@ -41,6 +41,10 @@ public class Meal implements Serializable {
     public Meal() {
     }
 
+    public Meal(Long id) {
+        this.id = id;
+    }
+
     public Meal(Long id, String name, String description, String picture, String type) {
         this.id = id;
         this.name = name;

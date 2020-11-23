@@ -1,38 +1,56 @@
 package com.solcov.api.menu;
 
+import com.solcov.api.meal.Meal;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_menu")
 public class Menu {
 
     @Id
+    @GeneratedValue(generator = "meal_generator", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "meal_generator", sequenceName = "s_meal_sequence", initialValue = 1, allocationSize = 1)
     private Long id;
 
+    @NotEmpty
     @ApiModelProperty(value = "Entradas del menu diario")
-    private String[] entrances;
+    @OneToMany
+    @JoinColumn(foreignKey = @ForeignKey(name = "entrances_menu_fk"), name = "entrances")
+    private List<Meal> entrances;
 
+    @NotEmpty
     @ApiModelProperty(value = "Medios del menu diario")
-    private String[] middles;
+    @OneToMany
+    @JoinColumn(foreignKey = @ForeignKey(name = "middles_menu_fk"), name = "middles")
+    private List<Meal> middles;
 
+    @NotEmpty
     @ApiModelProperty(value = "Guisados del menu diario")
-    private String[] stews;
+    @OneToMany
+    @JoinColumn(foreignKey = @ForeignKey(name = "stews_menu_fk"), name = "stews")
+    private List<Meal> stews;
 
+    @NotEmpty
     @ApiModelProperty(value = "Postres del menu diario")
-    private String[] desserts;
+    @OneToMany
+    @JoinColumn(foreignKey = @ForeignKey(name = "desserts_menu_fk"), name = "desserts")
+    private List<Meal> desserts;
 
+    @NotEmpty
     @ApiModelProperty(value = "Bebidas del menu diario")
-    private String[] drinks;
+    @OneToMany
+    @JoinColumn(foreignKey = @ForeignKey(name = "drinks_menu_fk"), name = "drinks")
+    private List<Meal> drinks;
 
 
     public Menu() {
     }
 
-    public Menu(Long id, String[] entrances, String[] middles, String[] stews, String[] desserts, String[] drinks) {
+    public Menu(Long id, List<Meal> entrances, List<Meal> middles, List<Meal> stews, List<Meal> desserts, List<Meal> drinks) {
         this.id = id;
         this.entrances = entrances;
         this.middles = middles;
@@ -49,43 +67,43 @@ public class Menu {
         this.id = id;
     }
 
-    public String[] getEntrances() {
+    public List<Meal> getEntrances() {
         return entrances;
     }
 
-    public void setEntrances(String[] entrances) {
+    public void setEntrances(List<Meal> entrances) {
         this.entrances = entrances;
     }
 
-    public String[] getMiddles() {
+    public List<Meal> getMiddles() {
         return middles;
     }
 
-    public void setMiddles(String[] middles) {
+    public void setMiddles(List<Meal> middles) {
         this.middles = middles;
     }
 
-    public String[] getStews() {
+    public List<Meal> getStews() {
         return stews;
     }
 
-    public void setStews(String[] stews) {
+    public void setStews(List<Meal> stews) {
         this.stews = stews;
     }
 
-    public String[] getDesserts() {
+    public List<Meal> getDesserts() {
         return desserts;
     }
 
-    public void setDesserts(String[] desserts) {
+    public void setDesserts(List<Meal> desserts) {
         this.desserts = desserts;
     }
 
-    public String[] getDrinks() {
+    public List<Meal> getDrinks() {
         return drinks;
     }
 
-    public void setDrinks(String[] drinks) {
+    public void setDrinks(List<Meal> drinks) {
         this.drinks = drinks;
     }
 }

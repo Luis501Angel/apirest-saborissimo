@@ -1,10 +1,13 @@
 package com.solcov.api.menu;
 
+import com.solcov.api.meal.ControllerMeal;
+import com.solcov.api.meal.Meal;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,17 +28,30 @@ public class ControllerMenu {
         }
     }
 
+    /*@RequestMapping(value = "/menu", method = RequestMethod.GET)
+    @ApiOperation(value = "Obtiene el menu diario")
+    public MenuDaily getMenuDaily(){
+        List<Long> idEntrances  = repositoryMenu.findMenu_entrances();
+        List<Meal> entrances = new ArrayList<>();
+        ControllerMeal controllerMeal = new ControllerMeal();
+        for(int i = 0; i < idEntrances.size(); i ++){
+            entrances.set(i, controllerMeal.getMealTest(Long.valueOf(1)));
+        }
+        MenuDaily menuDaily = new MenuDaily(entrances, entrances, entrances, entrances, entrances);
+        return menuDaily;
+    }*/
+
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     @ApiOperation(value = "Obtiene el menu diario")
-    public List<Menu> getAllMenus(){
-        return repositoryMenu.findAll();
+    public List<Menu> getMenuDaily(){
+        return  repositoryMenu.findAll();
     }
 
-    @RequestMapping(value = "/menu/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/menu", method = RequestMethod.DELETE)
     @ApiOperation(value = "Elimina el menu diario")
-    public boolean deleteMenu(@PathVariable Long id){
+    public boolean deleteMenu(){
         try {
-            repositoryMenu.deleteById(id);
+            repositoryMenu.deleteAll();
             return true;
         } catch (Exception e) {
             return false;

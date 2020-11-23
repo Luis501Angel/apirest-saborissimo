@@ -1,12 +1,23 @@
 package com.solcov.api.client;
 
-public class Client {
+import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+public class Client implements Serializable{
+
+    @Id
     private Long id;
     private String name;
     private String phone;
 
     public Client() {
+    }
+
+    public Client(Long id) {
+        this.id = id;
     }
 
     public Client(Long id, String name, String phone) {
