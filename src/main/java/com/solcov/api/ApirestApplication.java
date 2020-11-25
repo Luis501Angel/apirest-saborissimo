@@ -21,12 +21,11 @@ public class ApirestApplication {
     @Configuration
     class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-        private final String[] AUTH_WHITELIST = {
+        private final String[] DOCUMENTATION_LIST = {
                 "/swagger-resources/**",
                 "/swagger-ui.html",
                 "/v2/api-docs",
-                "/webjars/**",
-                "/login"
+                "/webjars/**"
         };
 
         @Override
@@ -34,7 +33,8 @@ public class ApirestApplication {
             http.cors().and().csrf().disable()
                     .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                     .authorizeRequests()
-                    .antMatchers(HttpMethod.POST, AUTH_WHITELIST).permitAll()
+                    .antMatchers(HttpMethod.GET, DOCUMENTATION_LIST).permitAll()
+                    .antMatchers(HttpMethod.POST, "/login").permitAll()
                     .anyRequest().authenticated();
         }
     }
