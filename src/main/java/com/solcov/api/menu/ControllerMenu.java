@@ -28,19 +28,6 @@ public class ControllerMenu {
         }
     }
 
-    /*@RequestMapping(value = "/menu", method = RequestMethod.GET)
-    @ApiOperation(value = "Obtiene el menu diario")
-    public MenuDaily getMenuDaily(){
-        List<Long> idEntrances  = repositoryMenu.findMenu_entrances();
-        List<Meal> entrances = new ArrayList<>();
-        ControllerMeal controllerMeal = new ControllerMeal();
-        for(int i = 0; i < idEntrances.size(); i ++){
-            entrances.set(i, controllerMeal.getMealTest(Long.valueOf(1)));
-        }
-        MenuDaily menuDaily = new MenuDaily(entrances, entrances, entrances, entrances, entrances);
-        return menuDaily;
-    }*/
-
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     @ApiOperation(value = "Obtiene el menu diario")
     public List<Menu> getMenuDaily(){

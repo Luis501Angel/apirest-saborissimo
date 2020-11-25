@@ -14,6 +14,7 @@ public class Menu {
     @Id
     @GeneratedValue(generator = "meal_generator", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "meal_generator", sequenceName = "s_meal_sequence", initialValue = 1, allocationSize = 1)
+    @ApiModelProperty(value = "ID del menu diario")
     private Long id;
 
     @NotEmpty

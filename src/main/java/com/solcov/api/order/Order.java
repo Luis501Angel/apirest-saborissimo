@@ -16,6 +16,7 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(generator = "order_generator", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "order_generator", sequenceName = "s_order_sequence", initialValue = 1, allocationSize = 1)
+    @ApiModelProperty(value = "ID de la orden")
     private Long id;
 
     @ApiModelProperty(value = "Estado actual de la orden [Entregado/No entregado]")

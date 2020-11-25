@@ -11,10 +11,20 @@ public class Address implements Serializable{
 
     @Id
     private Long id;
+
+    @ApiModelProperty(value = "Primera calle para la direccion")
     private String street1;
+
+    @ApiModelProperty(value = "Segunda calle para la direccion")
     private String street2;
+
+    @ApiModelProperty(value = "Colonia para la direccion")
     private String colony;
+
+    @ApiModelProperty(value = "Codigo postal para la direccion")
     private String postalCode;
+
+    @ApiModelProperty(value = "Referencias para la direccion")
     private String address_references;
 
     public Address() {

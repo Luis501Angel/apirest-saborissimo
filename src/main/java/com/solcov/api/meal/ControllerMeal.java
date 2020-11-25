@@ -38,7 +38,7 @@ public class ControllerMeal {
     }
 
     @RequestMapping(value = "/meal/type/{type}", method = RequestMethod.GET)
-    @ApiOperation(value = "Busca un platillo por el tipo")
+    @ApiOperation(value = "Busca un platillo por el tipo [entrada, medio, guisado, postre, bebida] ")
     public List<Meal> getMeal(@PathVariable String type){
         List<Meal> lstMealByType = repositoryMeal.findByType(type);
         return lstMealByType;
