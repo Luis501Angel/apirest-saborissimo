@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -20,38 +21,43 @@ public class Menu {
     @NotEmpty
     @ApiModelProperty(value = "Entradas del menu diario")
     @OneToMany
-    @JoinColumn(foreignKey = @ForeignKey(name = "entrances_menu_fk"), name = "entrances")
-    private List<Meal> entrances;
+    @OrderColumn(name = "entrances")
+    @JoinColumn(foreignKey = @ForeignKey(name = "entrances_menu_fk"))
+    private Meal[] entrances;
 
     @NotEmpty
     @ApiModelProperty(value = "Medios del menu diario")
     @OneToMany
-    @JoinColumn(foreignKey = @ForeignKey(name = "middles_menu_fk"), name = "middles")
-    private List<Meal> middles;
+    @OrderColumn(name = "middles")
+    @JoinColumn(foreignKey = @ForeignKey(name = "middles_menu_fk"))
+    private Meal[] middles;
 
     @NotEmpty
     @ApiModelProperty(value = "Guisados del menu diario")
     @OneToMany
-    @JoinColumn(foreignKey = @ForeignKey(name = "stews_menu_fk"), name = "stews")
-    private List<Meal> stews;
+    @OrderColumn(name = "stews")
+    @JoinColumn(foreignKey = @ForeignKey(name = "stews_menu_fk"))
+    private Meal[] stews;
 
     @NotEmpty
     @ApiModelProperty(value = "Postres del menu diario")
     @OneToMany
-    @JoinColumn(foreignKey = @ForeignKey(name = "desserts_menu_fk"), name = "desserts")
-    private List<Meal> desserts;
+    @OrderColumn(name = "desserts")
+    @JoinColumn(foreignKey = @ForeignKey(name = "desserts_menu_fk"))
+    private Meal[] desserts;
 
     @NotEmpty
     @ApiModelProperty(value = "Bebidas del menu diario")
     @OneToMany
-    @JoinColumn(foreignKey = @ForeignKey(name = "drinks_menu_fk"), name = "drinks")
-    private List<Meal> drinks;
+    @OrderColumn(name = "drinks")
+    @JoinColumn(foreignKey = @ForeignKey(name = "drinks_menu_fk"))
+    private Meal[] drinks;
 
 
     public Menu() {
     }
 
-    public Menu(Long id, List<Meal> entrances, List<Meal> middles, List<Meal> stews, List<Meal> desserts, List<Meal> drinks) {
+    public Menu(Long id, Meal[] entrances, Meal[] middles, Meal[] stews, Meal[] desserts, Meal[] drinks) {
         this.id = id;
         this.entrances = entrances;
         this.middles = middles;
@@ -68,43 +74,55 @@ public class Menu {
         this.id = id;
     }
 
-    public List<Meal> getEntrances() {
+    public Meal[] getEntrances() {
         return entrances;
     }
 
-    public void setEntrances(List<Meal> entrances) {
+    public void setEntrances(Meal[] entrances) {
         this.entrances = entrances;
     }
 
-    public List<Meal> getMiddles() {
+    public Meal[] getMiddles() {
         return middles;
     }
 
-    public void setMiddles(List<Meal> middles) {
+    public void setMiddles(Meal[] middles) {
         this.middles = middles;
     }
 
-    public List<Meal> getStews() {
+    public Meal[] getStews() {
         return stews;
     }
 
-    public void setStews(List<Meal> stews) {
+    public void setStews(Meal[] stews) {
         this.stews = stews;
     }
 
-    public List<Meal> getDesserts() {
+    public Meal[] getDesserts() {
         return desserts;
     }
 
-    public void setDesserts(List<Meal> desserts) {
+    public void setDesserts(Meal[] desserts) {
         this.desserts = desserts;
     }
 
-    public List<Meal> getDrinks() {
+    public Meal[] getDrinks() {
         return drinks;
     }
 
-    public void setDrinks(List<Meal> drinks) {
+    public void setDrinks(Meal[] drinks) {
         this.drinks = drinks;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", entrances=" + Arrays.toString(entrances) +
+                ", middles=" + Arrays.toString(middles) +
+                ", stews=" + Arrays.toString(stews) +
+                ", desserts=" + Arrays.toString(desserts) +
+                ", drinks=" + Arrays.toString(drinks) +
+                '}';
     }
 }
