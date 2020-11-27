@@ -27,14 +27,14 @@ public class ControllerAdministrator {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ApiOperation(value = "Inicio de sesion como administrador", notes = "Inicia sesion con nombre de usuario y contraseña")
     public Map<String, String> login(@RequestParam("username") String username, @RequestParam("password") String password) {
-        String sha256pass = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
+        //String sha256pass = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
         List<Administrator> lstAdminExist = repositoryUser.findByUsername(username);
         HashMap<String, String> map = new HashMap<>();
-        System.out.println(sha256pass);
+        //System.out.println(sha256pass);
         if(lstAdminExist.isEmpty()) {
             map.put("message", "El nombre del administrador esta incorrecto");
         } else {
-            if(lstAdminExist.get(0).getPassword().equals(sha256pass)){
+            if(lstAdminExist.get(0).getPassword().equals(password)){
                 map.put("key", getJWTToken(username));
                 return map;
             }
