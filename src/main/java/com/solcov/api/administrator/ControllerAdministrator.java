@@ -30,6 +30,7 @@ public class ControllerAdministrator {
         String sha256pass = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
         List<Administrator> lstAdminExist = repositoryUser.findByUsername(username);
         HashMap<String, String> map = new HashMap<>();
+        System.out.println(sha256pass);
         if(lstAdminExist.isEmpty()) {
             map.put("message", "El nombre del administrador esta incorrecto");
         } else {

@@ -53,4 +53,13 @@ public class Client implements Serializable{
     public void setPhone(Integer phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone=" + phone +
+                '}';
+    }
 }

@@ -20,37 +20,22 @@ public class Menu {
 
     @NotEmpty
     @ApiModelProperty(value = "Entradas del menu diario")
-    @OneToMany
-    @OrderColumn(name = "entrances")
-    @JoinColumn(foreignKey = @ForeignKey(name = "entrances_menu_fk"))
     private Meal[] entrances;
 
     @NotEmpty
     @ApiModelProperty(value = "Medios del menu diario")
-    @OneToMany
-    @OrderColumn(name = "middles")
-    @JoinColumn(foreignKey = @ForeignKey(name = "middles_menu_fk"))
     private Meal[] middles;
 
     @NotEmpty
     @ApiModelProperty(value = "Guisados del menu diario")
-    @OneToMany
-    @OrderColumn(name = "stews")
-    @JoinColumn(foreignKey = @ForeignKey(name = "stews_menu_fk"))
     private Meal[] stews;
 
     @NotEmpty
     @ApiModelProperty(value = "Postres del menu diario")
-    @OneToMany
-    @OrderColumn(name = "desserts")
-    @JoinColumn(foreignKey = @ForeignKey(name = "desserts_menu_fk"))
     private Meal[] desserts;
 
     @NotEmpty
     @ApiModelProperty(value = "Bebidas del menu diario")
-    @OneToMany
-    @OrderColumn(name = "drinks")
-    @JoinColumn(foreignKey = @ForeignKey(name = "drinks_menu_fk"))
     private Meal[] drinks;
 
 

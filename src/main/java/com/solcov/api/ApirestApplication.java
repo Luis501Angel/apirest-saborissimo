@@ -28,6 +28,14 @@ public class ApirestApplication {
                 "/webjars/**"
         };
 
+
+        private final String[] CLIENT_LIST_POST = {
+                "/menu-order",
+                "/order"
+        };
+
+
+
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http.cors().and().csrf().disable()
@@ -35,6 +43,8 @@ public class ApirestApplication {
                     .authorizeRequests()
                     .antMatchers(HttpMethod.GET, DOCUMENTATION_LIST).permitAll()
                     .antMatchers(HttpMethod.POST, "/login").permitAll()
+                    .antMatchers(HttpMethod.GET, "/menu").permitAll()
+                    .antMatchers(HttpMethod.POST, CLIENT_LIST_POST).permitAll()
                     .anyRequest().authenticated();
         }
     }

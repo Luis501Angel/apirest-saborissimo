@@ -90,4 +90,16 @@ public class Address implements Serializable{
     public void setReferences(String address_references) {
         this.address_references = address_references;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", street1='" + street1 + '\'' +
+                ", street2='" + street2 + '\'' +
+                ", colony='" + colony + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", address_references='" + address_references + '\'' +
+                '}';
+    }
 }

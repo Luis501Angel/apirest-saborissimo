@@ -39,13 +39,9 @@ public class Order implements Serializable {
     private String comments;
 
     @ApiModelProperty(value = "Direccion de envio en caso de escoger pedido a domicilio")
-    //@OneToOne
-    //@JoinColumn(foreignKey = @ForeignKey(name = "order_address_fk"), name = "address")
     private Address address;
 
     @ApiModelProperty(value = "Datos del cliente del pedido")
-    //@ManyToOne
-    //@JoinColumn(foreignKey = @ForeignKey(name = "order_client_fk"), name = "client")
     private Client client;
 
     public Order() {
@@ -124,5 +120,19 @@ public class Order implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", state=" + state +
+                ", menuOrder=" + menuOrder +
+                ", orderType='" + orderType + '\'' +
+                ", extras='" + extras + '\'' +
+                ", comments='" + comments + '\'' +
+                ", address=" + address +
+                ", client=" + client +
+                '}';
     }
 }

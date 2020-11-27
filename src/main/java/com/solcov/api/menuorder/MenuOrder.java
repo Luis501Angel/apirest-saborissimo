@@ -17,29 +17,19 @@ public class MenuOrder implements Serializable {
     @ApiModelProperty(value = "Id del menu de la orden")
     private Long id;
 
-    @ManyToOne()
     @ApiModelProperty(value = "Id del platillo para la entrada del menu")
-    @JoinColumn(foreignKey = @ForeignKey(name = "meal_entrance_to_menu_order_fk"), name = "entrance")
     private Meal entrance;
 
-    @ManyToOne()
     @ApiModelProperty(value = "Id del platillo para el medio del menu")
-    @JoinColumn(foreignKey = @ForeignKey(name = "meal_middle_to_menu_order_fk"), name = "middle")
     private Meal middle;
 
-    @ManyToOne()
     @ApiModelProperty(value = "Id del platillo para el guisado del menu")
-    @JoinColumn(foreignKey = @ForeignKey(name = "meal_stew_to_menu_order_fk"), name = "stew")
     private Meal stew;
 
-    @ManyToOne()
     @ApiModelProperty(value = "Id del platillo para el postre del menu")
-    @JoinColumn(foreignKey = @ForeignKey(name = "meal_dessert_to_menu_order_fk"), name = "dessert")
     private Meal dessert;
 
-    @ManyToOne()
     @ApiModelProperty(value = "Id del platillo para la bebida del menu")
-    @JoinColumn(foreignKey = @ForeignKey(name = "meal_drink_to_menu_order_fk"), name = "drink")
     private Meal drink;
 
     public MenuOrder() {
@@ -104,5 +94,17 @@ public class MenuOrder implements Serializable {
 
     public void setDrink(Meal drink) {
         this.drink = drink;
+    }
+
+    @Override
+    public String toString() {
+        return "MenuOrder{" +
+                "id=" + id +
+                ", entrance=" + entrance +
+                ", middle=" + middle +
+                ", stew=" + stew +
+                ", dessert=" + dessert +
+                ", drink=" + drink +
+                '}';
     }
 }
