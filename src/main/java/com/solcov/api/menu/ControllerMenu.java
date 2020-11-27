@@ -20,6 +20,7 @@ public class ControllerMenu {
     @RequestMapping(value = "/menu", method = RequestMethod.POST)
     @ApiOperation(value = "Crea un nuevo menu diario")
     public boolean createMenu(@RequestBody Menu menu){
+        repositoryMenu.deleteAll();
         try{
             repositoryMenu.save(menu);
             return true;
