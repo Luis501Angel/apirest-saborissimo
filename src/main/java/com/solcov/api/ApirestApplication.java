@@ -31,7 +31,8 @@ public class ApirestApplication {
 
         private final String[] CLIENT_LIST_POST = {
                 "/menu-order",
-                "/order"
+                "/order",
+                "/memory"
         };
 
 
@@ -44,6 +45,7 @@ public class ApirestApplication {
                     .antMatchers(HttpMethod.GET, DOCUMENTATION_LIST).permitAll()
                     .antMatchers(HttpMethod.POST, "/login").permitAll()
                     .antMatchers(HttpMethod.GET, "/menu").permitAll()
+                    .antMatchers(HttpMethod.GET, "/memory").permitAll()
                     .antMatchers(HttpMethod.POST, CLIENT_LIST_POST).permitAll()
                     .anyRequest().authenticated();
         }
