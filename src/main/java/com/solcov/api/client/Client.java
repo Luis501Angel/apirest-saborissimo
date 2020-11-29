@@ -15,7 +15,7 @@ public class Client implements Serializable{
     private String name;
 
     @ApiModelProperty(value = "Numero de telefono del cliente")
-    private Integer phone;
+    private Long phone;
 
     public Client() {
     }
@@ -24,7 +24,7 @@ public class Client implements Serializable{
         this.id = id;
     }
 
-    public Client(Long id, String name, Integer phone) {
+    public Client(Long id, String name, Long phone) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -46,11 +46,11 @@ public class Client implements Serializable{
         this.name = name;
     }
 
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

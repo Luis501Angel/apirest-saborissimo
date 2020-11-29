@@ -21,9 +21,6 @@ public class Address implements Serializable{
     @ApiModelProperty(value = "Colonia para la direccion")
     private String colony;
 
-    @ApiModelProperty(value = "Codigo postal para la direccion")
-    private String postalCode;
-
     @ApiModelProperty(value = "Referencias para la direccion")
     private String address_references;
 
@@ -34,12 +31,11 @@ public class Address implements Serializable{
         this.id = id;
     }
 
-    public Address(Long id, String street1, String street2, String colony, String postalCode, String address_references) {
+    public Address(Long id, String street1, String street2, String colony, String address_references) {
         this.id = id;
         this.street1 = street1;
         this.street2 = street2;
         this.colony = colony;
-        this.postalCode = postalCode;
         this.address_references = address_references;
     }
 
@@ -75,14 +71,6 @@ public class Address implements Serializable{
         this.colony = colony;
     }
 
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
     public String getReferences() {
         return address_references;
     }
@@ -98,7 +86,6 @@ public class Address implements Serializable{
                 ", street1='" + street1 + '\'' +
                 ", street2='" + street2 + '\'' +
                 ", colony='" + colony + '\'' +
-                ", postalCode='" + postalCode + '\'' +
                 ", address_references='" + address_references + '\'' +
                 '}';
     }
