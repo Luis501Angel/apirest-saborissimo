@@ -73,15 +73,5 @@ public class ControllerMeal {
         }
     }
 
-    public Meal getMealTest(Long id){
-        Optional<Meal> meal = repositoryMeal.findById(id);
-        System.out.println(meal.get().getName());
-        if(meal.isPresent()){
-            return meal.get();
-        } else {
-            return meal.get();
-        }
-    }
-
 
 }
